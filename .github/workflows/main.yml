@@ -12,15 +12,14 @@ jobs:
     steps:
       - uses: actions/checkout@v3
         with:
-          fetch-depth: 0
           lfs: true
       - name: Pull from hub
         env:
           HF_TOKEN: ${{ secrets.HF_TOKEN }}
         run: |
           git config user.email "roby.ramos.spfc@gmail.com"
-          git config user.name "robyramos86"
-          git pull https://robyramos:$HF_TOKEN@huggingface.co/spaces/robyramos/smart main
+          git config user.name "Roby Ramos"
+          git pull --rebase=true https://robyramos:$HF_TOKEN@huggingface.co/spaces/robyramos/smart main
       - name: Push to hub
         env:
           HF_TOKEN: ${{ secrets.HF_TOKEN }}
